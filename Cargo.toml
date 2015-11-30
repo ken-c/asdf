@@ -1,0 +1,9 @@
+[package]
+name = "asdf"
+version = "0.0.1"
+authors = [ "Ouch <ouch@example.com>" ]
+
+[dependencies]
+piston_window = "*"
+piston2d-graphics = "*"
+

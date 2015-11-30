@@ -1,0 +1,88 @@
+
+positioning
+
+resources
+resource model
+
+technologies
+technology research model
+
+spacecraft model
+
+combat model
+
+display
+
+
+----------
+positioning can start combat / diplomacy / trading
+
+
+technology affects resources / spacecraft / opponent spacecraft
+
+
+----------
+start with fixed technology model
+fixed positioning: 3d cartesian
+  mass
+  acceleration
+  manuevering
+  gravity
+  collision detection
+
+possible accelerations determine velocity and ultimately position cone.
+*** concentrate here to flesh out ideas.
+
+in space, decisions are:
+  navigation
+  acceleration
+  combat action
+
+on planet / station, decisions are:
+  ship upgrades
+  provisioning
+  navigation
+  intelligence
+  trading
+
+fixed combat model
+  sensors / stealth
+  targeting (active, passive)
+  six areas (front, 4 sides, rear)
+  weapons (beam, missile): targeting and damage
+  shielding: damage reduction, recharge
+  armor: damage reduction, damaged w/o replacement
+
+
+
+
+strawman display (text?)
+
+
+
+----------
+ongoing:
+
+how to encode flexibility in technology model?
+
+
+----------
+piston:
+https://github.com/PistonDevelopers/piston/wiki/Piston-overview
+
+window: piston
+pistoncore-glfw_window
+pistoncore-glutin_window
+pistoncore-sdl2_window
+
+2d graphics: piston2d-graphics
+piston2d-opengl_graphics
+piston2d-gfx_graphics
+piston2d-glium_graphics
+
+
+----------
+http://docs.piston.rs/graphics/graphics/
+
+
+----------
