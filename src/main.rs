@@ -6,38 +6,40 @@ extern crate piston_window;
 
 use piston_window::*;
 
+mod object;
+use object::Object;
+
 
 struct Game {
-    rot: f64,
-    x: f64,
-    y: f64,
+    player: Object,
     up: bool, down: bool, left: bool, right: bool
 }
 
 impl Game {
     fn new() -> Game {
         Game {
-            rot: 0.0, x: 0.0, y: 0.0,
+            player: Object::new(),
             up: false, down: false, left: false, right: false
         }
     }
     fn update(&mut self, upd: UpdateArgs) {
-        self.rot += 90.0 * upd.dt;
-        if self.up { self.y += -50.0 * upd.dt; }
-        if self.down { self.y += 50.0 * upd.dt; }
-        if self.left { self.x += -50.0 * upd.dt; }
-        if self.right { self.x += 50.0 * upd.dt; }
+        if self.left { self.player.rot(-90.0 * upd.dt); }
+        if self.right { self.player.rot(90.0 * upd.dt); }
+        if self.up {
+            self.player.forward(100.0*upd.dt);
+        }
+        if self.down {
+            self.player.forward(-100.0*upd.dt);
+        }
     }
     fn render(&mut self, ren: RenderArgs, e: PistonWindow) {
         e.draw_2d(|c, g| {
             // background to black
             clear([0.0; 4], g);
-            // draw red triangle centered about 0,0
-            let red = [1.0, 0.0, 0.0, 1.0];
-            let coords = &[ [0.0, 50.0], [25.0, -50.0], [-25.0, -50.0] ];
-            let center = c.transform.trans(self.x, self.y)
-                .rot_deg(self.rot);
-            polygon(red, coords, center, g);
+
+            let center = c.transform.trans(
+                (ren.width/2) as f64, (ren.height/2) as f64);
+            self.player.render(g, center);
         });
     }
     fn input(&mut self, inp: Input) {
